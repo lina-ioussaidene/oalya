@@ -1,0 +1,6 @@
+{
+  "name": "Oalya Botanics",
+  "description": "Boutique en ligne de cosmétique bio et Clean Beauty, formulée en Algérie.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
