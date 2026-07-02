@@ -96,8 +96,19 @@ export default function AdminDashboard() {
     setProductsLoading(true);
     const { data, error } = await supabase.from('products').select('*').order('created_at', { ascending: false });
     if (!error && data) {
-      setProducts(data);
-      updateStats(orders, data);
+      const formattedProducts: Product[] = data.map((item) => ({
+        id: item.id.toString(),
+        name: item.name,
+        englishName: item.english_name,
+        price: Number(item.price),
+        currency: item.currency || 'DZD',
+        ingredients: item.ingredients,
+        benefits: item.benefits,
+        imageUrl: item.image_url,
+        created_at: item.created_at
+      }));
+      setProducts(formattedProducts);
+      updateStats(orders, formattedProducts);
     }
     setProductsLoading(false);
   };
